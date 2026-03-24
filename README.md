@@ -8,4 +8,8 @@ This project is an automated patrol robot simulation system built on the ROS2 Ja
 * OS : ubuntu 24.04 LTS  
 * ROS2 version : ROS2 Jazzy  
 * Simulation software : Gazebo / RVIZ2  
-* Language : python / xml  
+* Language : python / xml (xacro)  
+
+### Project structure 
+* launch
+    * robot_sim.launch.py - 
