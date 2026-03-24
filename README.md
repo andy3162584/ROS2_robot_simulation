@@ -18,5 +18,5 @@ This project is an automated patrol robot simulation system built on the ROS2 Ja
 * meshes - 3D geometry of robot appearance
 * rviz - rviz configuration file
 * urdf 
-  * robot.xacro - The URDF file mainly defines the robot’s structure, joint configuration, and appearance model.
+  * patrol_robot.xacro - The URDF file mainly defines the robot’s structure, joint configuration, and appearance model.
 * worlds
