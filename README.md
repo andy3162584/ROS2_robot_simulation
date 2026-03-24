@@ -9,12 +9,3 @@ This project is an automated patrol robot simulation system built on the ROS2 Ja
 * ROS2 version : ROS2 Jazzy  
 * Simulation software : Gazebo / RVIZ2  
 * Language : python / xml  
-  
-  
-### Project Structure
-robot_sim.launch.py  
-├── Gazebo Simulation Environment  
-├── Robot Spawner  
-├── Robot State Publisher  
-├── ROS-Gz Bridge  
-└── RViz2 Visualization  
