@@ -114,22 +114,29 @@
 
 <!--==========================================-->
 <!-- 建立牆壁 -->
+	<!--    x     -->
+	<!-- y  0 -y  -->
+	<!--   -x     -->
 <!-- 四邊圍牆 -->
-	<xacro:wall_func wall_name="front" x="-10" y="0" yaw="1.57" length="10"/>
-	<xacro:wall_func wall_name="back" x="10" y="0" yaw="1.57" length="10"/>
-	<xacro:wall_func wall_name="left" x="0" y="5" yaw="0" length="20"/>
-	<xacro:wall_func wall_name="right" x="0" y="-5" yaw="0" length="20"/>
-<!-- 房間1 -->
-	<xacro:wall_func wall_name="room1_front" x="-4.95" y="2.85" yaw="1.57" length="4.35"/>
-	<xacro:wall_func wall_name="room1_back" x="0" y="2.85" yaw="1.57" length="4.3"/>
-	<xacro:wall_func wall_name="room1_right" x="-3" y="0.7" yaw="0" length="4"/>
-<!-- 房間2 -->
-	<xacro:wall_func wall_name="room2_front" x="-4.95" y="-2.85" yaw="1.57" length="4.35"/>
-	<xacro:wall_func wall_name="room2_back" x="4.95" y="-2.85" yaw="1.57" length="4.3"/>
-	<xacro:wall_func wall_name="room2_left1" x="3" y="-0.7" yaw="0" length="4"/>
-	<xacro:wall_func wall_name="room2_left2" x="-3" y="-0.7" yaw="0" length="4"/>
-<!-- 房間3 -->
-	<xacro:wall_func wall_name="room3_back" x="4.95" y="2.85" yaw="1.57" length="4.3"/>
-	<xacro:wall_func wall_name="room3_right" x="3" y="0.7" yaw="0" length="4"/>
+	<xacro:wall_func wall_name="front" x="-10" y="0" yaw="1.57" length="20"/>
+	<xacro:wall_func wall_name="back" x="10" y="0" yaw="1.57" length="20"/>
+	<xacro:wall_func wall_name="left" x="0" y="10" yaw="0" length="20"/>
+	<xacro:wall_func wall_name="right" x="0" y="-10" yaw="0" length="20"/>
+<!-- 場景 -->
+	<xacro:wall_func wall_name="scene1" x="-8" y="0" yaw="1.57" length="14"/>
+	<xacro:wall_func wall_name="scene2" x="-6" y="-4" yaw="0" length="4"/>
+	<xacro:wall_func wall_name="scene3" x="-4" y="-5.5" yaw="1.57" length="3"/>
+	<xacro:wall_func wall_name="scene4" x="-6" y="0.5" yaw="1.57" length="1"/>
+	<xacro:wall_func wall_name="scene5" x="-5.5" y="1" yaw="0" length="1"/>
+	<xacro:wall_func wall_name="scene6" x="-5" y="0.5" yaw="1.57" length="1"/>
+	<xacro:wall_func wall_name="scene7" x="-5.5" y="0" yaw="0" length="1"/>
+	<xacro:wall_func wall_name="scene8" x="0" y="5" yaw="1.57" length="4"/>
+	<xacro:wall_func wall_name="scene9" x="0" y="3" yaw="0" length="6"/>
+	<xacro:wall_func wall_name="scene10" x="2" y="-3.5" yaw="1.57" length="3"/>
+	<xacro:wall_func wall_name="scene11" x="3.5" y="-2" yaw="0" length="3"/>
+	<xacro:wall_func wall_name="scene12" x="5.5" y="-7" yaw="0" length="3"/>
+	<xacro:wall_func wall_name="scene13" x="7" y="-6" yaw="1.57" length="2"/>
+	<xacro:wall_func wall_name="scene14" x="-7" y="2" yaw="1.57" length="4"/>
+	<xacro:wall_func wall_name="scene15" x="8.5" y="0" yaw="0" length="3"/>
 </world>
 </sdf>
