@@ -12,11 +12,14 @@ This project is an automated patrol robot simulation system built on the ROS2 Ja
 
 ### Project structure 
 * config
-  * 
+  * bridge_config.yaml - Define the bridging parameters between ROS 2 and Gazebo
+  * mapper_params_online_async.yaml - SLAM Toolbox core parameter file
 * launch
-  * robot_sim.launch.py - 
+  * robot_sim.launch.py - Launch Gazebo and import maps and bots, enable RVIZ, and establish communication between the bot and Gazebo.
 * meshes - 3D geometry of robot appearance
 * rviz - rviz configuration file
 * urdf 
-  * patrol_robot.xacro - The URDF file mainly defines the robot’s structure, joint configuration, and appearance model.
+  * patrol_robot.xacro - This file mainly defines the robot’s structure, joint configuration, and appearance model
 * worlds
+  * world.xacro - Define the scenario of the simulation environment
+* setup.py - The project's installation script ensures that launch can find the file.
