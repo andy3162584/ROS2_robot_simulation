@@ -1,0 +1,142 @@
+<?xml version="1.0" ?>
+<sdf version="1.8" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<!-- title	:world.sdf			-->
+<!-- Author	:Chen Bo An 		-->
+<!-- Date 	:2026-03-15			-->
+
+
+<world name="robot_world">
+<!--==========================================-->
+<!-- 定義XACRO清單 -->
+	<!-- 牆壁巨集 -->
+	<xacro:macro name="wall_func" params="wall_name x y yaw length">
+		<model name="${wall_name}">
+			<!-- 是否靜止 -->
+            <static>true</static>
+			<!-- 位置(xyz rpy) -->
+            <pose>${x} ${y} 0.51 0 0 ${yaw}</pose>
+			
+            <link name="${wall_name}">
+				<!-- 外觀屬性 -->
+				<visual name="${wall_name}_visual">
+					<geometry>
+						<!-- 長方體 -->
+						<box>
+							<!-- 牆的大小(長寬高) -->
+							<size>${length} 0.1 1</size>
+						</box>
+					</geometry>
+					<!-- 材質設定 -->
+					<material>
+						<ambient>1 1 1 1</ambient>
+						<diffuse>1 1 1 1</diffuse>
+					</material>
+				</visual>
+				
+				<!-- 碰撞屬性 -->
+				<collision name="${wall_name}_collision">
+					<geometry>
+						<box>
+							<size>${length} 0.1 1</size>
+						</box>
+					</geometry>
+				</collision>
+			</link>
+        </model>
+	</xacro:macro>
+
+<!--==========================================-->
+<!-- 物理環境與系統設定 -->
+	<physics name="1ms" type="dart">
+		<max_step_size>0.001</max_step_size>
+		<real_time_factor>1.0</real_time_factor>
+	</physics>
+	
+	<!-- 物理插件 -->
+	<plugin filename="gz-sim-physics-system" name="gz::sim::systems::Physics"/>
+	<!-- 用戶指令 -->
+	<plugin filename="gz-sim-user-commands-system" name="gz::sim::systems::UserCommands"/>
+	<!-- 場景廣播 -->
+	<plugin filename="gz-sim-scene-broadcaster-system" name="gz::sim::systems::SceneBroadcaster"/>
+
+	<plugin filename="gz-sim-sensors-system" name="gz::sim::systems::Sensors">
+		<render_engine>ogre</render_engine>
+	</plugin>
+	
+	
+	<!-- 設定環境光即背景顏色 -->
+	<scene>
+		<ambient>0.6 0.6 0.6 1</ambient>
+		<background>0.3 0.3 0.3 1</background>
+		<shadows>false</shadows> 
+		<grid>true</grid>
+	</scene>
+
+	<!-- 模擬斜上方的平行光線 -->
+	<light type="directional" name="sun">
+		<!-- 設定光源位置(xyz rpy) -->
+		<pose>0 0 10 0 0 0</pose>
+		<!-- 燈光顏色(RGBA) -->
+		<diffuse>1 1 1 1</diffuse>
+		<!-- 光線照向 -->
+		<direction>-0.5 0.1 -0.9</direction>
+	</light>
+
+	<!-- 建立地板 -->
+	<model name="floor">
+		<static>true</static>
+		<link name="link">
+			<!-- 外觀屬性 -->
+			<visual name="v">
+				<geometry>
+					<plane>
+						<normal>0 0 1</normal>
+						<size>100 100</size>
+					</plane>
+				</geometry>
+				<material>
+					<ambient>0.8 0.8 0.8 1</ambient>
+					<diffuse>0.8 0.8 0.8 1</diffuse>
+				</material>
+			</visual>
+			
+			<!-- 碰撞屬性 -->
+			<collision name="c">
+				<geometry>
+					<plane>
+						<normal>0 0 1</normal>
+						<size>100 100</size>
+					</plane>
+				</geometry>
+			</collision>
+		</link>
+	</model>
+
+<!--==========================================-->
+<!-- 建立牆壁 -->
+	<!--    x     -->
+	<!-- y  0 -y  -->
+	<!--   -x     -->
+<!-- 四邊圍牆 -->
+	<xacro:wall_func wall_name="front" x="-10" y="0" yaw="1.57" length="20"/>
+	<xacro:wall_func wall_name="back" x="10" y="0" yaw="1.57" length="20"/>
+	<xacro:wall_func wall_name="left" x="0" y="10" yaw="0" length="20"/>
+	<xacro:wall_func wall_name="right" x="0" y="-10" yaw="0" length="20"/>
+<!-- 場景 -->
+	<xacro:wall_func wall_name="scene1" x="-8" y="0" yaw="1.57" length="14"/>
+	<xacro:wall_func wall_name="scene2" x="-6" y="-4" yaw="0" length="4"/>
+	<xacro:wall_func wall_name="scene3" x="-4" y="-5.5" yaw="1.57" length="3"/>
+	<xacro:wall_func wall_name="scene4" x="-6" y="0.5" yaw="1.57" length="1"/>
+	<xacro:wall_func wall_name="scene5" x="-5.5" y="1" yaw="0" length="1"/>
+	<xacro:wall_func wall_name="scene6" x="-5" y="0.5" yaw="1.57" length="1"/>
+	<xacro:wall_func wall_name="scene7" x="-5.5" y="0" yaw="0" length="1"/>
+	<xacro:wall_func wall_name="scene8" x="0" y="5" yaw="1.57" length="4"/>
+	<xacro:wall_func wall_name="scene9" x="0" y="3" yaw="0" length="6"/>
+	<xacro:wall_func wall_name="scene10" x="2" y="-3.5" yaw="1.57" length="3"/>
+	<xacro:wall_func wall_name="scene11" x="3.5" y="-2" yaw="0" length="3"/>
+	<xacro:wall_func wall_name="scene12" x="5.5" y="-7" yaw="0" length="3"/>
+	<xacro:wall_func wall_name="scene13" x="7" y="-6" yaw="1.57" length="2"/>
+	<xacro:wall_func wall_name="scene14" x="7" y="2" yaw="1.57" length="4"/>
+	<xacro:wall_func wall_name="scene15" x="8.5" y="0" yaw="0" length="3"/>
+</world>
+</sdf>

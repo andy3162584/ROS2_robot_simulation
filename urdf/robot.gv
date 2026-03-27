@@ -1,0 +1,23 @@
+digraph G {
+node [shape=box];
+"base_link" [label="base_link"];
+"chaiss" [label="chaiss"];
+"laser_frame" [label="laser_frame"];
+"left_back_wheel" [label="left_back_wheel"];
+"left_front_wheel" [label="left_front_wheel"];
+"right_back_wheel" [label="right_back_wheel"];
+"right_front_wheel" [label="right_front_wheel"];
+node [shape=ellipse, color=blue, fontcolor=blue];
+"base_link" -> "base_joint" [label="xyz: 0 0 0.22 \nrpy: 0 -0 0"]
+"base_joint" -> "chaiss"
+"chaiss" -> "laser_frame_joint" [label="xyz: 0 0 0.1 \nrpy: 0 -0 0"]
+"laser_frame_joint" -> "laser_frame"
+"base_link" -> "left_back_wheel_joint" [label="xyz: -0.175 0.18 0.0425 \nrpy: 0 -0 0"]
+"left_back_wheel_joint" -> "left_back_wheel"
+"base_link" -> "left_front_wheel_joint" [label="xyz: 0.175 0.18 0.0425 \nrpy: 0 -0 0"]
+"left_front_wheel_joint" -> "left_front_wheel"
+"base_link" -> "right_back_wheel_joint" [label="xyz: -0.175 -0.18 0.0425 \nrpy: 0 -0 0"]
+"right_back_wheel_joint" -> "right_back_wheel"
+"base_link" -> "right_front_wheel_joint" [label="xyz: 0.175 -0.18 0.0425 \nrpy: 0 -0 0"]
+"right_front_wheel_joint" -> "right_front_wheel"
+}

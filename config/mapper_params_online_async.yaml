@@ -1,0 +1,47 @@
+slam_toolbox:
+  ros__parameters:
+    # 1. 核心座標對接 (與 XACRO 的 robot 模型完全一致)
+    odom_frame: odom
+    base_frame: base_link
+    map_frame: map
+    scan_topic: /scan
+    use_sim_time: true
+
+    # 2. 解決 "Failed to compute odom pose" 的關鍵參數
+    # 增加查找時間到 5.0 秒 (針對虛擬機啟動延遲與效能抖動)
+    transform_timeout: 5.0          
+    # 增加 TF 緩衝，讓 SLAM 能翻找更久以前的座標數據
+    tf_buffer_duration: 30.0        
+    # 查找座標轉換的單次超時設定
+    lookup_transform_timeout: 1.0
+    mode: mapping
+    
+    # 3. 掃描與頻率調優 (減輕虛擬機 CPU 負擔)
+    throttle_scans: 1               # 每兩筆雷達資料處理一筆，防止時鐘偏移
+    scan_buffer_size: 40            # 增加雷達數據緩衝，避免網路延遲丟包
+    map_update_interval: 2.0        # 每 2 秒更新一次地圖即可，節省算力
+    use_odometry_corrections: true
+    
+    # 4. 匹配門檻 (極低門檻，強迫初始化與微小位移捕捉)
+    minimum_travel_distance: 0.1   # 稍微調高，避免機器人原地微抖動時頻繁更新地圖
+    minimum_travel_heading: 0.1
+    resample_threshold: 0.5
+    angle_variance_penalty: 0.5
+    scan_buffer_size: 10
+
+    # 5. 雷達物理參數 (根據你的 XACRO 雷達設定)
+    max_laser_range: 12.0           # RPLIDAR A1M8 在模擬器中的最大範圍
+    minimum_time_interval: 0.01     # 忽略極短時間內的重複數據
+    
+    # 6. SLAM 模式與解析度
+    mode: mapping
+    resolution: 0.05                # 5公分解析度，平衡精細度與運算量
+
+    # 7. 求解器設定 (Ceres Solver)
+    solver_plugin: solver_plugins::CeresSolver
+    ceres_loss_function: None
+    ceres_linear_solver: SPARSE_NORMAL_CHOLESKY
+    ceres_preconditioner: SCHUR_JACOBI
+    ceres_trust_strategy: LEVENBERG_MARQUARDT
+    ceres_dogleg_type: TRADITIONAL_DOGLEG
+    ceres_sparse_linear_algebra_library: SUITE_SPARSE
