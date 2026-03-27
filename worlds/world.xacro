@@ -136,7 +136,11 @@
 	<xacro:wall_func wall_name="scene11" x="3.5" y="-2" yaw="0" length="3"/>
 	<xacro:wall_func wall_name="scene12" x="5.5" y="-7" yaw="0" length="3"/>
 	<xacro:wall_func wall_name="scene13" x="7" y="-6" yaw="1.57" length="2"/>
+<<<<<<< HEAD
 	<xacro:wall_func wall_name="scene14" x="-7" y="2" yaw="1.57" length="4"/>
+=======
+	<xacro:wall_func wall_name="scene14" x="7" y="2" yaw="1.57" length="4"/>
+>>>>>>> ea4e212 (Added IMU method to assist in map building)
 	<xacro:wall_func wall_name="scene15" x="8.5" y="0" yaw="0" length="3"/>
 </world>
 </sdf>

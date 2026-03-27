@@ -14,6 +14,10 @@ slam_toolbox:
     tf_buffer_duration: 30.0        
     # 查找座標轉換的單次超時設定
     lookup_transform_timeout: 1.0
+<<<<<<< HEAD
+=======
+    mode: mapping
+>>>>>>> ea4e212 (Added IMU method to assist in map building)
     
     # 3. 掃描與頻率調優 (減輕虛擬機 CPU 負擔)
     throttle_scans: 1               # 每兩筆雷達資料處理一筆，防止時鐘偏移
@@ -22,10 +26,18 @@ slam_toolbox:
     use_odometry_corrections: true
     
     # 4. 匹配門檻 (極低門檻，強迫初始化與微小位移捕捉)
+<<<<<<< HEAD
     minimum_travel_distance: 0.05
     minimum_travel_heading: 0.05
     resample_threshold: 0.5
     angle_variance_penalty: 0.5
+=======
+    minimum_travel_distance: 0.1   # 稍微調高，避免機器人原地微抖動時頻繁更新地圖
+    minimum_travel_heading: 0.1
+    resample_threshold: 0.5
+    angle_variance_penalty: 0.5
+    scan_buffer_size: 10
+>>>>>>> ea4e212 (Added IMU method to assist in map building)
 
     # 5. 雷達物理參數 (根據你的 XACRO 雷達設定)
     max_laser_range: 12.0           # RPLIDAR A1M8 在模擬器中的最大範圍
