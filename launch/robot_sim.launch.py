@@ -16,10 +16,7 @@ def generate_launch_description():
     # ==============================
     robot_xacro = os.path.join(pkg_share, 'urdf', 'patrol_robot.xacro')
     robot_description = xacro.process_file(robot_xacro).toxml()
-<<<<<<< HEAD
-=======
     ekf_config_path = os.path.join(pkg_share, 'config', 'ekf.yaml')
->>>>>>> ea4e212 (Added IMU method to assist in map building)
 
     # ==============================
     # 2. 解析 World (xacro -> sdf)
@@ -80,18 +77,6 @@ def generate_launch_description():
             '/scan@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan',
             '/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock',
             '/odom@nav_msgs/msg/Odometry[gz.msgs.Odometry',
-<<<<<<< HEAD
-            '/model/patrol_robot/tf@tf2_msgs/msg/TFMessage[gz.msgs.Pose_V',
-            '/cmd_vel@geometry_msgs/msg/Twist]gz.msgs.Twist',
-            '/joint_states@sensor_msgs/msg/JointState[gz.msgs.Model'
-        ],
-        remappings=[
-            ('/model/patrol_robot/tf', '/tf')
-        ],
-        parameters=[{
-            'use_sim_time': True,
-            'qos_overrides./scan.reliability': 'reliable',
-=======
             '/cmd_vel@geometry_msgs/msg/Twist]gz.msgs.Twist',
             '/imu/data@sensor_msgs/msg/Imu[gz.msgs.IMU',
             '/joint_states@sensor_msgs/msg/JointState[gz.msgs.Model'
@@ -100,7 +85,6 @@ def generate_launch_description():
             'use_sim_time': True,
             'qos_overrides./scan.reliability': 'reliable',
             'qos_overrides./imu/data.reliability': 'best_effort',
->>>>>>> ea4e212 (Added IMU method to assist in map building)
         }],
         output='screen'
     )
@@ -112,11 +96,7 @@ def generate_launch_description():
         arguments=[
             '-name', 'patrol_robot',
             '-topic', 'robot_description',
-<<<<<<< HEAD
-            '-x', '-8', '-y', '0', '-z', '0.2'
-=======
             '-x', '0', '-y', '0', '-z', '0.2'
->>>>>>> ea4e212 (Added IMU method to assist in map building)
         ],
         output='screen'
     )
@@ -136,8 +116,6 @@ def generate_launch_description():
         output='screen'
     )
 
-<<<<<<< HEAD
-=======
     robot_localization_node = Node(
         package='robot_localization',
         executable='ekf_node',
@@ -146,7 +124,6 @@ def generate_launch_description():
         parameters=[ekf_config_path, {'use_sim_time': True}]
     )
 
->>>>>>> ea4e212 (Added IMU method to assist in map building)
     # ==============================
     # 強制發布 base_link -> chassis
     static_tf_chassis = Node(
@@ -167,10 +144,6 @@ def generate_launch_description():
         robot_state_pub,
         bridge,
         spawn_delay,
-<<<<<<< HEAD
-        rviz
-=======
         rviz,
         robot_localization_node
->>>>>>> ea4e212 (Added IMU method to assist in map building)
     ])

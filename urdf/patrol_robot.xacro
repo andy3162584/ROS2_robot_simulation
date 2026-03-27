@@ -134,8 +134,7 @@
 		<origin xyz="0 0 0.1" rpy="0 0 0"/>
 	</joint>
 
-<<<<<<< HEAD
-=======
+
 	<link name="imu_link">
 		<inertial>
 			<mass value="0.01"/>
@@ -149,7 +148,7 @@
 		<origin xyz="0 0 0.05" rpy="0 0 0"/>
 	</joint>
 
->>>>>>> ea4e212 (Added IMU method to assist in map building)
+
 <!--==========================================-->
 <!-- Gazebo 控制與物理 -->
 	<!-- 輪子參數設定 -->
@@ -210,29 +209,17 @@
 			
 			<!-- 是否發布TF與里程計資料 -->
 			<publish_odom>true</publish_odom>
-<<<<<<< HEAD
-			<publish_odom_tf>true</publish_odom_tf>
-			<publish_wheel_tf>true</publish_wheel_tf>
-			
-			<!-- 更新頻率 -->
-			<update_rate>20</update_rate>
-=======
 			<publish_odom_tf>false</publish_odom_tf>
 			<publish_wheel_tf>false</publish_wheel_tf>
 			
 			<!-- 更新頻率 -->
 			<update_rate>30</update_rate>
->>>>>>> ea4e212 (Added IMU method to assist in map building)
 		</plugin>
 		
 		<!-- 將數據發佈到topic -->
 		<plugin filename="gz-sim-joint-state-publisher-system" name="gz::sim::systems::JointStatePublisher">
 			<topic>joint_states</topic>
-<<<<<<< HEAD
-			<update_rate>20</update_rate>
-=======
 			<update_rate>30</update_rate>
->>>>>>> ea4e212 (Added IMU method to assist in map building)
 		</plugin>
 	</gazebo>
 
@@ -265,8 +252,6 @@
             <visualize>false</visualize>
         </sensor>
     </gazebo>
-<<<<<<< HEAD
-=======
 
 	<gazebo>
   		<plugin filename="gz-sim-imu-system" name="gz::sim::systems::Imu">
@@ -295,5 +280,4 @@
 			</imu>
 		</sensor>
 	</gazebo>
->>>>>>> ea4e212 (Added IMU method to assist in map building)
 </robot>
