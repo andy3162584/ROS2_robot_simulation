@@ -28,6 +28,9 @@ setup(
         # 【關鍵】確保 World XACRO 檔案被正確搬運
         (os.path.join('share', package_name, 'worlds'), glob(os.path.join('worlds', '*.xacro'))),
         
+        # 確保地圖檔案被安裝 (包含 .yaml 和 .pgm)
+        (os.path.join('share', package_name, 'maps'), glob(os.path.join('maps', '*.[yp][ag][ml]*'))),
+
         # 確保 Config YAML 檔案被安裝
         (os.path.join('share', package_name, 'config'), glob(os.path.join('config', '*.yaml'))),
     ],
